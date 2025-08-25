@@ -1,130 +1,110 @@
-PDF & Image Utility Toolkit
+# 📚 PDF & Image Utility Toolkit
 
-This is a browser-based utility project for performing common PDF and image tasks. It includes the following tools:
+A browser-based utility project for performing common PDF and image tasks.
 
-✅ Image Size Reducer (JPG, PNG to target size)
+It includes the following tools:
 
-✅ JPG to PDF Converter
+* ✅ **Image Size Reducer** (JPG, PNG to target size)
+* ✅ **JPG to PDF Converter**
+* ✅ **PDF to JPG Converter**
+* ✅ **PDF Merger**
+* ✅ **PDF Splitter**
+* ✅ **PDF to DOCX Converter**
 
-✅ PDF to JPG Converter
-
-✅ PDF Merger
-
-✅ PDF Splitter
-
-✅ PDF to DOCX Converter
-
-
-
----
-
-🧩 Project Structure
+## 🧩 Project Structure
 
 resourcePP/
 ├── assets/              # Logos, wallpapers, branding
 ├── backend/             # Python Flask backend APIs
 ├── frontend/            # HTML, CSS, JS frontend
-├── static/              # Used by backend to store temporary files
-└── test_resource/       # Your test files (not required for deployment)
+├── static/              # Temporary storage for uploads and 
+
+## ⚙ Technologies Used
+
+* **Frontend:** HTML, CSS, JavaScript (Vanilla)
+* **Backend:** Python 3 with Flask (REST APIs)
+* **Libraries:**
+
+  * Pillow (image processing & compression)
+  * Ghostscript (PDF compression, splitting, merging)
+  * Flask-CORS (for frontend–backend communication)
+  * Waitress (for production deployment on Windows servers)
 
 
----
+## ⚡ Running in Development Mode
 
-⚙ Technologies Used
+1. **Install dependencies**
 
-HTML, CSS, JavaScript (Vanilla)
-
-Python 3
-
-Flask (as backend API)
-
-Ghostscript (for PDF compression)
-
-Pillow (for image compression)
-
-
-
----
-
-⚡ How to Run (Development Mode)
-
-1. Install Python packages
-
+```bash
 pip install -r requirements.txt
+```
 
-2. Install Ghostscript
+2. **Install Ghostscript**
 
-Make sure Ghostscript is installed and gswin64c or gs is available in the system path.
+   * Make sure Ghostscript (`gs` / `gswin64c`) is installed and added to system PATH.
+   * [Download Ghostscript](https://www.ghostscript.com/download/gsdnld.html)
 
-Download: https://www.ghostscript.com/download/gsdnld.html
+3. **Start Flask backend**
 
-
-3. Run Flask server
-
+```bash
 python backend/server.py
+```
 
-4. Open Frontend
+4. **Open frontend**
 
-Open frontend/index.html in your browser.
+   * Simply open `frontend/index.html` in your browser.
+   * Frontend will send API requests to: `http://127.0.0.1:5000`
 
-> Note: Tools like PDF compressor or PDF to DOCX will make requests to http://127.0.0.1:5000.
+## 🚀 Running in Production Mode (University Server Deployment)
 
+1. **Install Waitress**
 
-
-
----
-
-🚀 How to Run (Production Server)
-
-If deploying on a university server or production:
-
-1. Install Waitress (recommended for Windows)
-
+```bash
 pip install waitress
+```
 
-2. Run backend via Waitress
+2. **Run backend via Waitress**
 
+```bash
 python backend/server.py
+```
 
-This will run the app on port 5000. You can reverse-proxy it through Nginx if needed.
+> This will serve the app on port **5000** (or your configured port).
+> For university-wide access, technical cell can set up a **reverse proxy (e.g., Nginx/Apache)** to map it to a public domain.
 
+3. **Frontend Hosting**
 
----
+   * `frontend/` can be hosted on any web server (Apache, Nginx, IIS, or even static hosting).
+   * The only requirement: it must be able to reach the backend API (Flask+Waitress).
 
-📦 requirements.txt
+## 📦 requirements.txt
 
+```
 Flask
 flask-cors
 Pillow
 waitress
+```
+
+## 🔒 Security & Cleanup
+
+* Uploaded and processed files are stored only temporarily inside `static/`.
+* Files are deleted automatically after being served to the user.
+* No permanent storage of user documents.
 
 
----
+## 👨‍🏫 Notes for University Deployment
 
-🔒 Security & Cleanup
+* The **Flask app is for development**.
+* The **Waitress server is for production** (stable, secure, non-reloading).
+* If deployment is required for multiple users, technical cell should:
 
-All uploaded and generated files are stored in static/ and auto-deleted after use.
+  * Run backend with Waitress.
+  * Expose backend using Nginx/Apache reverse proxy.
+  * Host `frontend/` as static files accessible to students.
 
-Files are served as downloads and not stored permanently.
+## 🧠 Developed By
 
-
-
----
-
-👨‍🏫 Notes for University Deployment
-
-This project is designed to be run locally or via a backend server like Waitress.
-
-Please contact the technical cell if a reverse proxy or central deployment is required.
-
-Frontend can be hosted as static files, the only requirement is that it should reach the backend server (localhost or remote).
-
-
-
----
-
-🧠 Developed by
-
-Ravinandan Samrat (B.Tech CSE, 3rd Year)
-
-Contact: ornsamrat2004@gmail.com
+**Ravinandan Samrat**
+B.Tech CSE, 3rd Year, Central University of Jharkhand
+📧 Email: [ornsamrat2004@gmail.com](mailto:ornsamrat2004@gmail.com)
