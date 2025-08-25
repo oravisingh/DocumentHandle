@@ -2,8 +2,6 @@ PDF & Image Utility Toolkit
 
 This is a browser-based utility project for performing common PDF and image tasks. It includes the following tools:
 
-✅ PDF Compressor (target file size)
-
 ✅ Image Size Reducer (JPG, PNG to target size)
 
 ✅ JPG to PDF Converter
